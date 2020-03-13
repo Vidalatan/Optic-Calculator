@@ -1,3 +1,5 @@
+import constants
+
 class Eyewear:
     def __init__(self):
         self.lens = self.select_lens()
