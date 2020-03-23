@@ -1,4 +1,5 @@
-import constants
+from constants import ReConstants as rcon
+import re
 
 class Eyewear:
     def __init__(self):
@@ -12,23 +13,23 @@ class Eyewear:
         lens = None
         while lens not in ["sin","lbi","ltr","spr","ppr","dpr"]:
             lens = input("Single Vision (SV) or Multifocal (MF)\n").lower()
-            if lens in ["single","single vision", "sv", "s"]:
+            if re.search(rcon.sin, lens):
                 #if the lens is single vision set lens to sin. End of probe.
                 lens = "sin"
                 print("Single Vision selected.")
 
-            elif lens in ["multi", "multifocal", "mf", "m"]:
+            elif re.search(rcon.mul, lens):
                 #if the lens is multifocal, continue probing for type of multifocal.
                 lens = input("Multifocal\n\tIs this a lined(L) or no lined(NL) multifocal lens?\n").lower()
-                if lens in ["line", "lined", "l"]:
+                if re.search(rcon.line, lens):
                     #if lens is lined multifocal, probe for bi or tri focal type.
-                    lens = input("Lined\n\tIs it bifocal(B) or trifocal(T)\n?").lower()
-                    if lens in ["bi","bifocal","b"]:
+                    lens = input("Lined\n\tIs it bifocal(B) or trifocal(T)?\n").lower()
+                    if re.search(rcon.lbi, lens):
                         #if lens is lined bifocal, set lens to lbi
                         lens = "lbi"
                         print("Lined-Bifocal Vision selected.")
 
-                    elif lens in ["tri", "trifocal", "t"]:
+                    elif re.search(rcon.ltr, lens):
                         #if lens is lined trifocal, set lens to ltr
                         lens = "ltr"
                         print("Lined-Trifocal Vision selected.")
@@ -36,18 +37,18 @@ class Eyewear:
                     else:
                         print("Invalid response. Please try again.")
                         continue
-                elif lens in ["no", "no lined", "nl"]:
+                elif re.search(rcon.noli, lens):
                     #if the lens is a no-line multifocal, probe for standard, premium, or digital.
                     lens = input("No-Line\n\tIs this a Standard(S), Premium(P), or Digital(D) progressive?\n").lower()
-                    if lens in ["stand","standard","s"]:
+                    if re.search(rcon.spr, lens):
                         lens = "spr"
                         print("Standard Progressive selected.")
 
-                    elif lens in ["prem","premium","p"]:
+                    elif re.search(rcon.ppr, lens):
                         lens = "ppr"
                         print("Premium Progressive selected.")
 
-                    elif lens in ["digi","digital","d"]:
+                    elif re.search(rcon.dpr, lens):
                         lens = "dpr"
                         print("Digital Progressive selected.")
 
@@ -57,6 +58,13 @@ class Eyewear:
                 else:
                     print("Invalid response. Please try again")
         return lens
+
+    # def is_single(self, lens)
+    # def is_multi(self, lens)
+    # def is_line(self, lens)
+    # def is_prog(self, lens)
+    # def is_stand(self, lens)
+    # def is_digit(self, lens)
 
     def select_material(self):
         material = input("What material is the lens made of?\n-CR-39(AKA Plastic)\n-Polycarobonate\nHigh-Index(AKA HI 1.67)\n").lower()
