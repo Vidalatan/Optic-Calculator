@@ -8,3 +8,5 @@ print(John)
 print(John.lens)
 print(John.material)
 print(John.options)
+
+# John.what_is()
