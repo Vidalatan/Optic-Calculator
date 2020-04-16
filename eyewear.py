@@ -1,7 +1,8 @@
 import constants as c
 import re
 
-select = c.regs
+sel_reg = c.terms[0]
+sel_term = c.terms[1]
 
 class Eyewear:
     def __init__(self):
