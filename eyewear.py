@@ -1,20 +1,17 @@
-import constants as c
-import re
-
-sel_reg = c.terms[0]
-sel_term = c.terms[1]
-
 class Eyewear:
-    def __init__(self):
-        self.errmsg = "Invalid response. Please try again."
-        self.lens = self._select_lens()
-        self.material = self._select_material()
-        self.options = self._select_options()
-    def __str__(self):
-        return f"The eyewear is {self.lens} vision. It is made of {self.material}. Anti-reflective {self.options['antireflect']}. Sunglass is {self.options['sun']} It has {self.options['other']}."
+    def __init__(self,name,pin,lens,material,options):
+        self.name = name # The name of the user the eyewear belongs to. (string)
+        self.pin = pin # ^^Probably need to add encryption later if to retain a pin attr (int)
+        self.lens = lens # Lens category that the eyewear falls into (string)
+        self.material = material # Material of the lens (string)
+        self.options = options # Will contain a dict for options if they are present or not. (dict{option:boolean,...})
+    # def __str__(self):
+    #     return f"The eyewear is {self.lens} vision. It is made of {self.material}. Anti-reflective {self.options['antireflect']}. Sunglass is {self.options['sun']} It has {self.options['other']}."
+    # Need to modify the string representation of the Eyewear class
 
     def what_is(self):
         term = input("Please enter a specific or general term:\n(Example: Polycarbonate or materials")
+        
 
 
     def _select_lens(self):
