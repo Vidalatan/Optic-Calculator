@@ -1,0 +1,12 @@
+***
+def search_terms(self, input_string):
+    '''This function will return a list of terms that match the input when checked against the terms listed
+    in the constants.py file. The intent is to make it simpler to comb through each of the terms to find a
+    match to the input throughout the lens selection process.'''
+    cursor = constants.terms #current term that the function is referencing
+    feeback = [] #the list of matches that the function will return
+    for term in cursor.keys():
+        if re.search(cursor[term],input_string): #This for/if nested loop tries to match each term to the input with
+            feedback.append(term)         #the regex provided by the constants.py file
+    return feedback #Returns a list of terms that were found to match the input
+    ***

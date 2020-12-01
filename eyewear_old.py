@@ -8,8 +8,6 @@ class Eyewear:
 
     def what_is(self):
         term = input("Please enter a specific or general term:\n(Example: Polycarbonate or materials")
-        
-
 
     def _select_lens(self):
         # instance method for determining the lens in the eyewear. This is the primary
